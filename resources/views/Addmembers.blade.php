@@ -4,7 +4,7 @@
 <li>{{$req}}</li>
 @endforeach
 @endif --}}
-<form action="{{ url('add') }}" method="POST">
+<form enctype="multipart/form-data" action="{{ url('add') }}" method="POST">
     @csrf
     <input type="text" name="name" placeholder="enter name "><br>
     <span style="color: blue">
@@ -25,5 +25,6 @@
             {{ $message }}
         @enderror
     </span><BR><br>
+    <input type="file" name="picture">
     <button type="submit">Add Members</button>
 </form>

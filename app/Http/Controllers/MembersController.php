@@ -19,6 +19,18 @@ class MembersController extends Controller
         $member->address = $req->address;
         $member->email = $req->email;
         // $member->country=$req->countary;
+
+
+        $file = $req->file('picture');
+
+        // dd($image = $file->getClientOriginalExtension());
+        $image = time() . '.' . $file->getClientOriginalExtension();
+        $destinationPath = 'assets/admin/uploads/image/';
+        $file->move('public/upload', $image);
+
+        $member->picture = $image;
+
+
         $member->save();
         return redirect('');
     }
@@ -44,8 +56,18 @@ class MembersController extends Controller
         $data->name = $req->name;
         $data->address = $req->address;
         $data->email = $req->email;
+
+        $file = $req->file('picture');
+        //$image=$file->getClientOriginalName();
+        // dd($file->getClientOriginalExtension());
+        $image = time() . '.' . $file->getClientOriginalExtension();
+        $destinationPath = 'assets/admin/uploads/image/';
+        $file->move('public/upload', $image);
+
+        $data->picture = $image;
+
         $data->save();
         return redirect('list');
     }
 }
-// rizwan her
+// rizwan here

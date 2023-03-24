@@ -9,5 +9,8 @@ class Student_online extends Model
 {
     use HasFactory;
     protected $table = "student_online";
-    protected $primarykey ="id";
+
+
+
+    protected $primarykey = "id";
 }
